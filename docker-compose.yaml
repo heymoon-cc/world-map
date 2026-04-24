@@ -1,0 +1,6 @@
+services:
+    map:
+        build: .
+        volumes:
+            - ./var/data:/data
+            - ./var/redis:/var/redis
