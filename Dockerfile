@@ -5,14 +5,15 @@ RUN apk add --no-cache --virtual .build-deps \
     geos-dev \
     git
 RUN apk add --no-cache imagemagick protoc geos nginx supervisor redis
-RUN pecl install imagick protobuf redis && \
+RUN pecl install imagick protobuf redis apcu && \
     git clone https://git.osgeo.org/gitea/geos/php-geos.git /usr/src/php/ext/geos && cd /usr/src/php/ext/geos && \
         	./autogen.sh && ./configure && make && \
         mv /usr/src/php/ext/geos/modules/geos.so /usr/local/lib/php/extensions/no-debug-non-zts-20240924/geos.so
-RUN docker-php-ext-enable imagick geos protobuf redis
+RUN docker-php-ext-enable imagick geos protobuf redis apcu
 RUN apk del -f .build-deps && rm -rf /tmp/* /var/cache/apk/*
 COPY docker/nginx /etc/nginx/http.d
 COPY docker/supervisor /etc/supervisor.d
+COPY docker/php/*.ini /usr/local/etc/php/conf.d/
 COPY docker/php/*.conf /usr/local/etc/php-fpm.d/
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www

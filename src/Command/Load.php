@@ -28,7 +28,8 @@ class Load extends Command
         'tunnel', 'sidewalk', 'wall', 'greenfield', 'brownfield', 'scrub', 'heath', 'grassland', 'grass', 'greenland',
         'island', 'building', 'farmland', 'cemetery', 'allotments', 'apartment', 'residential', 'primary', 'secondary',
         'mall', 'wood', 'tertiary', 'trunk', 'trunk_link', 'primary_link', 'tertiary_link', 'secondary_link', 'dam',
-        'tree', 'tree_row', 'stadium', 'wetland', 'structure', 'stone', 'outdoor', 'fountain', 'bench', 'embankment'];
+        'tree', 'tree_row', 'stadium', 'motorcycle', 'structure', 'stone', 'outdoor', 'fountain', 'bench', 'embankment',
+        'tower', 'school', 'staircase', 'bus_station', 'wetland', 'railway_crossing', 'marketplace', 'fence', 'ground'];
 
     public function __construct(
         private readonly GeoJSONReader          $reader,
@@ -81,11 +82,21 @@ class Load extends Command
                 continue;
             }
             $result = [];
+            $address = [];
             foreach ($properties as $name => $value) {
+                if (str_starts_with($name, 'addr:')) {
+                    $address[] = $value;
+                }
                 if (str_contains($name, ':') && !str_ends_with($name, ':ru')) {
                     continue;
                 }
                 $result[$name] = $value;
+            }
+            if ($address && empty($result['address'])) {
+                $result['address'] = implode(', ', $address);
+            }
+            if (isset($result['name']) || isset($result['address'])) {
+                $result['label'] = $result['name'] ?? $result['address'];
             }
             $source->add($layer, $feature->getGeometry()->withSRID(WorldGeodeticProjection::SRID), $result);
             if (!in_array($layer, $layerNames)) {

@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class StyleController extends AbstractController
 {
     public function __construct(
+        private readonly string $origin,
         private readonly string $hostname,
         private readonly ThemeFactory $factory
     ) {}
@@ -32,7 +33,7 @@ class StyleController extends AbstractController
                 'base' => [
                     'type' => 'vector',
                     'tiles' => [
-                        "$this->hostname/tiles/{x}/{y}/{z}"
+                        "https://$this->hostname/tiles/{x}/{y}/{z}"
                     ],
                     'minZoom' => 0,
                     'maxZoom' => 14,
@@ -132,15 +133,6 @@ class StyleController extends AbstractController
                     'source-layer' => 'residential',
                     'layout' => [
                         'visibility' => 'visible'
-                    ]
-                ],
-                [
-                    'id' => 'residential_label',
-                    'type' => 'symbol',
-                    'source' => 'base',
-                    'source-layer' => 'residential',
-                    'layout' => [
-                        'text-field' => 'name'
                     ]
                 ],
                 [
@@ -344,6 +336,34 @@ class StyleController extends AbstractController
                     ]
                 ],
                 [
+                    'id' => 'building_labels',
+                    'type' => 'symbol',
+                    'source' => 'base',
+                    'source-layer' => 'building',
+                    'layout' => [
+                        'text-font' => [
+                            'Roboto Black'
+                        ],
+                        'text-field' => [
+                            'type' => 'identity',
+                            'property' => 'label'
+                        ],
+                        'text-ignore-placement' => false,
+                        'text-allow-overlap' => false,
+                        'text-pitch-alignment' => 'auto',
+                        'text-rotation-alignment' => 'auto',
+                        'text-transform' => 'none',
+                        'text-optional' => false,
+                        'symbol-placement' => 'line',
+                        'visibility' => 'visible',
+                        'text-size' => 14
+                    ],
+                    'paint' => [
+                        'text-halo-color' => 'rgba(255, 255, 255, 1)',
+                        'text-halo-width' => 2
+                    ]
+                ],
+                [
                     'id' => 'farmland',
                     'type' => 'fill',
                     'source' => 'base',
@@ -409,8 +429,97 @@ class StyleController extends AbstractController
                         ]
                     ]
                 ],
+                [
+                    'id' => 'residential_labels',
+                    'type' => 'symbol',
+                    'source' => 'base',
+                    'source-layer' => 'residential',
+                    'layout' => [
+                        'text-font' => [
+                            'Roboto Black'
+                        ],
+                        'text-field' => [
+                            'type' => 'identity',
+                            'property' => 'name'
+                        ],
+                        'text-ignore-placement' => false,
+                        'text-allow-overlap' => false,
+                        'text-pitch-alignment' => 'auto',
+                        'text-rotation-alignment' => 'auto',
+                        'text-transform' => 'none',
+                        'text-optional' => false,
+                        'symbol-placement' => 'line',
+                        'visibility' => 'visible',
+                        'text-size' => 14,
+                        'text-keep-upright' => true,
+                        'text-justify' => 'center'
+                    ],
+                    'paint' => [
+                        'text-halo-color' => 'rgba(255, 255, 255, 1)',
+                        'text-halo-width' => 2
+                    ]
+                ],
+                [
+                    'id' => 'primary_labels',
+                    'type' => 'symbol',
+                    'source' => 'base',
+                    'source-layer' => 'primary',
+                    'layout' => [
+                        'text-font' => [
+                            'Roboto Black'
+                        ],
+                        'text-field' => [
+                            'type' => 'identity',
+                            'property' => 'name'
+                        ],
+                        'text-ignore-placement' => false,
+                        'text-allow-overlap' => false,
+                        'text-pitch-alignment' => 'auto',
+                        'text-rotation-alignment' => 'auto',
+                        'text-transform' => 'none',
+                        'text-optional' => false,
+                        'symbol-placement' => 'line',
+                        'visibility' => 'visible',
+                        'text-size' => 16,
+                        'text-keep-upright' => true
+                    ],
+                    'paint' => [
+                        'text-halo-color' => 'rgba(255, 255, 255, 1)',
+                        'text-halo-width' => 2
+                    ]
+                ],
+                [
+                    'id' => 'secondary_labels',
+                    'type' => 'symbol',
+                    'source' => 'base',
+                    'source-layer' => 'secondary',
+                    'layout' => [
+                        'text-font' => [
+                            'Roboto Black'
+                        ],
+                        'text-field' => [
+                            'type' => 'identity',
+                            'property' => 'name'
+                        ],
+                        'text-ignore-placement' => false,
+                        'text-allow-overlap' => false,
+                        'text-pitch-alignment' => 'auto',
+                        'text-rotation-alignment' => 'auto',
+                        'text-transform' => 'none',
+                        'text-optional' => false,
+                        'symbol-placement' => 'line',
+                        'visibility' => 'visible',
+                        'text-size' => 15,
+                        'text-writing-mode' => [],
+                        'text-keep-upright' => true
+                    ],
+                    'paint' => [
+                        'text-halo-color' => 'rgba(255, 255, 255, 1)',
+                        'text-halo-width' => 2
+                    ]
+                ]
             ],
             'id' => 'heymoon-base-tiles'
-        ]);
+        ], 200, ['Access-Control-Allow-Origin' => $this->origin]);
     }
 }
