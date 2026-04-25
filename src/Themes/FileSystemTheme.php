@@ -15,9 +15,9 @@ class FileSystemTheme implements ThemeInterface
         return $this->configuration['name'];
     }
 
-    public function getColor(string $fieldName, string $fallback = '#000'): string
+    public function getPaint(string $fieldName, array $fallback = ['fill-color' => '#000']): array
     {
-        return $this->configuration['colors'][$fieldName] ?? $fallback;
+        return $this->configuration['paint'][$fieldName] ?? $fallback;
     }
 
     public function getSprite(): string
@@ -28,5 +28,10 @@ class FileSystemTheme implements ThemeInterface
     public function getGlyphs(): string
     {
         return $this->configuration['glyphs'];
+    }
+
+    public function getFont(): array
+    {
+        return $this->configuration['font'];
     }
 }

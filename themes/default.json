@@ -1,28 +1,93 @@
 {
-    "name": "Basic",
-    "colors": {
-        "sand": "rgba(232, 255, 0, 1)",
-        "water": "rgba(131, 156, 255, 1)",
-        "river": "rgba(131, 156, 255, 1)",
-        "bridge": "rgba(116, 116, 116, 1)",
-        "railway": "rgba(71, 0, 139, 1)",
-        "battlefield": "rgba(255, 0, 0, 1)",
-        "brownfield": "rgba(128, 68, 0, 1)",
-        "scrub": "rgba(0, 141, 37, 1)",
-        "heath": "rgba(180, 188, 21, 1)",
-        "grassland": "rgba(35, 211, 2, 1)",
-        "grass": "rgba(30, 169, 2, 1)",
-        "greenfield": "rgba(22, 128, 0, 1)",
-        "island": "rgba(128, 68, 0, 1)",
-        "playground": "rgba(247, 85, 4, 1)",
-        "mall": "rgba(79, 79, 79, 1)",
-        "structure": "rgba(79, 79, 79, 1)",
-        "building": "rgba(79, 79, 79, 1)",
-        "farmland": "rgba(58, 178, 43, 1)",
-        "cemetery": "rgba(44, 44, 44, 1)",
-        "allotments": "rgba(95, 17, 17, 1)",
-        "wood": "rgba(0, 135, 37, 1)"
+    "name": "Default",
+    "paint": {
+        "labels": {
+            "text-halo-color": "rgba(255, 255, 255, 1)",
+            "text-halo-width": 2
+        },
+        "sand": {
+            "circle-color": "rgba(232, 255, 0, 1)"
+        },
+        "water": {
+            "fill-color": "rgba(131, 156, 255, 1)"
+        },
+        "river": {
+            "line-color": "rgba(131, 156, 255, 1)",
+            "line-width": 5
+        },
+        "bridge": {
+            "line-color": "rgba(116, 116, 116, 1)",
+            "line-width": 2
+        },
+        "railway": {
+            "line-color": "rgba(71, 0, 139, 1)"
+        },
+        "battlefield": {
+            "fill-color": "rgba(255, 0, 0, 1)"
+        },
+        "brownfield": {
+            "fill-color": "rgba(128, 68, 0, 1)"
+        },
+        "scrub": {
+            "fill-color": "rgba(0, 141, 37, 1)"
+        },
+        "heath": {
+            "fill-color": "rgba(180, 188, 21, 1)"
+        },
+        "grassland": {
+            "fill-color": "rgba(35, 211, 2, 1)"
+        },
+        "grass": {
+            "fill-color": "rgba(30, 169, 2, 1)"
+        },
+        "greenfield": {
+            "fill-color": "rgba(22, 128, 0, 1)"
+        },
+        "island": {
+            "fill-color": "rgba(128, 68, 0, 1)"
+        },
+        "playground": {
+            "circle-color": "rgba(247, 85, 4, 1)"
+        },
+        "mall": {
+            "fill-color": "rgba(79, 79, 79, 1)"
+        },
+        "structure": {
+            "fill-extrusion-color": "rgba(79, 79, 79, 1)",
+            "fill-extrusion-height": 10
+        },
+        "building": {
+            "fill-color": "rgba(79, 79, 79, 1)"
+        },
+        "farmland": {
+            "fill-color": "rgba(58, 178, 43, 1)"
+        },
+        "cemetery": {
+            "fill-color": "rgba(44, 44, 44, 1)",
+            "fill-pattern": "cemetery_11"
+        },
+        "allotments": {
+            "fill-color": "rgba(95, 17, 17, 1)"
+        },
+        "wood": {
+            "circle-color": "rgba(0, 135, 37, 1)",
+            "circle-radius": {
+                "stops": [
+                    [
+                        5,
+                        5
+                    ],
+                    [
+                        15,
+                        10
+                    ]
+                ]
+            }
+        }
     },
+    "font": [
+        "Roboto Black"
+    ],
     "sprite": "https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite",
     "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf"
 }

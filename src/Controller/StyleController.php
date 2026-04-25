@@ -51,9 +51,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'circle-color' => $theme->getColor('sand')
-                    ]
+                    'paint' => $theme->getPaint('sand')
                 ],
                 [
                     'id' => 'water',
@@ -63,19 +61,14 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('water')
-                    ]
+                    'paint' => $theme->getPaint('water')
                 ],
                 [
                     'id' => 'river',
                     'type' => 'line',
                     'source' => 'base',
                     'source-layer' => 'river',
-                    'paint' => [
-                        'line-color' => $theme->getColor('river'),
-                        'line-width' => 5
-                    ]
+                    'paint' => $theme->getPaint('river')
                 ],
                 [
                     'id' => 'secondary',
@@ -112,10 +105,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'line-width' => 2,
-                        'line-color' => $theme->getColor('bridge')
-                    ]
+                    'paint' => $theme->getPaint('bridge')
                 ],
                 [
                     'id' => 'primary',
@@ -149,9 +139,7 @@ class StyleController extends AbstractController
                     'type' => 'line',
                     'source' => 'base',
                     'source-layer' => 'railway',
-                    'paint' => [
-                        'line-color' => $theme->getColor('railway')
-                    ]
+                    'paint' => $theme->getPaint('railway')
                 ],
                 [
                     'id' => 'tunnel',
@@ -182,9 +170,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('battlefield')
-                    ]
+                    'paint' => $theme->getPaint('battlefield')
                 ],
                 [
                     'id' => 'brownfield',
@@ -194,9 +180,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('brownfield')
-                    ]
+                    'paint' => $theme->getPaint('brownfield')
                 ],
                 [
                     'id' => 'scrub',
@@ -206,9 +190,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('scrub')
-                    ]
+                    'paint' => $theme->getPaint('scrub')
                 ],
                 [
                     'id' => 'heath',
@@ -218,9 +200,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('heath')
-                    ]
+                    'paint' => $theme->getPaint('heath')
                 ],
                 [
                     'id' => 'grassland',
@@ -230,9 +210,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('grassland')
-                    ]
+                    'paint' => $theme->getPaint('grassland')
                 ],
                 [
                     'id' => 'grass',
@@ -242,9 +220,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('grass')
-                    ]
+                    'paint' => $theme->getPaint('grass')
                 ],
                 [
                     'id' => 'greenfield',
@@ -254,9 +230,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('greenfield')
-                    ]
+                    'paint' => $theme->getPaint('greenfield')
                 ],
                 [
                     'id' => 'island',
@@ -266,9 +240,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('island')
-                    ]
+                    'paint' => $theme->getPaint('island')
                 ],
                 [
                     'id' => 'platform',
@@ -284,9 +256,7 @@ class StyleController extends AbstractController
                     'type' => 'circle',
                     'source' => 'base',
                     'source-layer' => 'playground',
-                    'paint' => [
-                        'circle-color' => $theme->getColor('playground')
-                    ]
+                    'paint' => $theme->getPaint('playground')
                 ],
                 [
                     'id' => 'mall',
@@ -296,9 +266,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('mall')
-                    ]
+                    'paint' => $theme->getPaint('mall')
                 ],
                 [
                     'id' => 'building',
@@ -308,19 +276,14 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('building')
-                    ]
+                    'paint' => $theme->getPaint('building')
                 ],
                 [
                     'id' => 'building_exrtusion',
                     'type' => 'fill-extrusion',
                     'source' => 'base',
                     'source-layer' => 'building',
-                    'paint' => [
-                        'fill-extrusion-color' => $theme->getColor('building'),
-                        'fill-extrusion-height' => 10
-                    ]
+                    'paint' => $theme->getPaint('structure')
                 ],
                 [
                     'id' => 'structure',
@@ -330,10 +293,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-extrusion-color' => $theme->getColor('structure'),
-                        'fill-extrusion-height' => 10
-                    ]
+                    'paint' => $theme->getPaint('structure')
                 ],
                 [
                     'id' => 'building_labels',
@@ -341,9 +301,7 @@ class StyleController extends AbstractController
                     'source' => 'base',
                     'source-layer' => 'building',
                     'layout' => [
-                        'text-font' => [
-                            'Roboto Black'
-                        ],
+                        'text-font' => $theme->getFont(),
                         'text-field' => [
                             'type' => 'identity',
                             'property' => 'label'
@@ -356,12 +314,9 @@ class StyleController extends AbstractController
                         'text-optional' => false,
                         'symbol-placement' => 'line',
                         'visibility' => 'visible',
-                        'text-size' => 14
+                        'text-size' => ['stops' => [[14, 0], [16, 14]]]
                     ],
-                    'paint' => [
-                        'text-halo-color' => 'rgba(255, 255, 255, 1)',
-                        'text-halo-width' => 2
-                    ]
+                    'paint' => $theme->getPaint('labels')
                 ],
                 [
                     'id' => 'farmland',
@@ -371,9 +326,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('farmland')
-                    ]
+                    'paint' => $theme->getPaint('farmland')
                 ],
                 [
                     'id' => 'cemetery',
@@ -383,18 +336,14 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'fill-color' => $theme->getColor('cemetery')
-                    ]
+                    'paint' => $theme->getPaint('cemetery')
                 ],
                 [
                     'id' => 'allotments',
                     'type' => 'fill',
                     'source' => 'base',
                     'source-layer' => 'allotments',
-                    'paint' => [
-                        'fill-color' => $theme->getColor('allotments')
-                    ]
+                    'paint' => $theme->getPaint('allotments')
                 ],
                 [
                     'id' => 'apartment',
@@ -413,21 +362,7 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => [
-                        'circle-color' => $theme->getColor('wood'),
-                        'circle-radius' => [
-                            'stops' => [
-                                [
-                                    5,
-                                    5
-                                ],
-                                [
-                                    15,
-                                    10
-                                ]
-                            ]
-                        ]
-                    ]
+                    'paint' => $theme->getPaint('wood')
                 ],
                 [
                     'id' => 'residential_labels',
@@ -435,9 +370,7 @@ class StyleController extends AbstractController
                     'source' => 'base',
                     'source-layer' => 'residential',
                     'layout' => [
-                        'text-font' => [
-                            'Roboto Black'
-                        ],
+                        'text-font' => $theme->getFont(),
                         'text-field' => [
                             'type' => 'identity',
                             'property' => 'name'
@@ -454,10 +387,7 @@ class StyleController extends AbstractController
                         'text-keep-upright' => true,
                         'text-justify' => 'center'
                     ],
-                    'paint' => [
-                        'text-halo-color' => 'rgba(255, 255, 255, 1)',
-                        'text-halo-width' => 2
-                    ]
+                    'paint' => $theme->getPaint('labels')
                 ],
                 [
                     'id' => 'primary_labels',
@@ -465,9 +395,7 @@ class StyleController extends AbstractController
                     'source' => 'base',
                     'source-layer' => 'primary',
                     'layout' => [
-                        'text-font' => [
-                            'Roboto Black'
-                        ],
+                        'text-font' => $theme->getFont(),
                         'text-field' => [
                             'type' => 'identity',
                             'property' => 'name'
@@ -483,10 +411,7 @@ class StyleController extends AbstractController
                         'text-size' => 16,
                         'text-keep-upright' => true
                     ],
-                    'paint' => [
-                        'text-halo-color' => 'rgba(255, 255, 255, 1)',
-                        'text-halo-width' => 2
-                    ]
+                    'paint' => $theme->getPaint('labels')
                 ],
                 [
                     'id' => 'secondary_labels',
@@ -494,9 +419,7 @@ class StyleController extends AbstractController
                     'source' => 'base',
                     'source-layer' => 'secondary',
                     'layout' => [
-                        'text-font' => [
-                            'Roboto Black'
-                        ],
+                        'text-font' => $theme->getFont(),
                         'text-field' => [
                             'type' => 'identity',
                             'property' => 'name'
@@ -513,10 +436,7 @@ class StyleController extends AbstractController
                         'text-writing-mode' => [],
                         'text-keep-upright' => true
                     ],
-                    'paint' => [
-                        'text-halo-color' => 'rgba(255, 255, 255, 1)',
-                        'text-halo-width' => 2
-                    ]
+                    'paint' => $theme->getPaint('labels')
                 ]
             ],
             'id' => 'heymoon-base-tiles'
