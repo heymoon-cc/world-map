@@ -96,7 +96,7 @@ class Load extends Command
                 $result[$name] = $value;
             }
             if ($address && empty($result['address'])) {
-                $result['address'] = implode(', ', $address);
+                $result['address'] = implode(', ', array_reverse($address));
             }
             if (isset($result['name']) || isset($result['address'])) {
                 $result['label'] = $result['name'] ?? $result['address'];

@@ -80,6 +80,17 @@ class StyleController extends AbstractController
                     ]
                 ],
                 [
+                    'id' => 'embarkment',
+                    'type' => 'line',
+                    'source' => 'base',
+                    'source-layer' => 'embarkment',
+                    'layout' => [
+                        'line-cap' => 'round',
+                        'line-join' => 'round'
+                    ],
+                    'paint' => $theme->getPaint('embarkment')
+                ],
+                [
                     'id' => 'bridge-shadow',
                     'type' => 'line',
                     'source' => 'base',
@@ -283,7 +294,8 @@ class StyleController extends AbstractController
                     'type' => 'fill-extrusion',
                     'source' => 'base',
                     'source-layer' => 'building',
-                    'paint' => $theme->getPaint('structure')
+                    'paint' => $theme->getPaint('structure'),
+                    'minzoom' => 10
                 ],
                 [
                     'id' => 'structure',
@@ -312,11 +324,12 @@ class StyleController extends AbstractController
                         'text-rotation-alignment' => 'auto',
                         'text-transform' => 'none',
                         'text-optional' => false,
-                        'symbol-placement' => 'line',
+                        'symbol-placement' => 'point',
                         'visibility' => 'visible',
                         'text-size' => ['stops' => [[14, 0], [16, 14]]]
                     ],
-                    'paint' => $theme->getPaint('labels')
+                    'paint' => $theme->getPaint('labels'),
+                    'minzoom' => 12
                 ],
                 [
                     'id' => 'farmland',
@@ -337,6 +350,46 @@ class StyleController extends AbstractController
                         'visibility' => 'visible'
                     ],
                     'paint' => $theme->getPaint('cemetery')
+                ],
+                [
+                    'id' => 'school',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'school',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('school')
+                ],
+                [
+                    'id' => 'hospital',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'hospital',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('hospital')
+                ],
+                [
+                    'id' => 'fire_station',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'fire_station',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('fire_station')
+                ],
+                [
+                    'id' => 'dog_park',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'dog_park',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('dog_park')
                 ],
                 [
                     'id' => 'allotments',
@@ -437,6 +490,84 @@ class StyleController extends AbstractController
                         'text-keep-upright' => true
                     ],
                     'paint' => $theme->getPaint('labels')
+                ],
+                [
+                    'id' => 'village',
+                    'type' => 'symbol',
+                    'source' => 'base',
+                    'source-layer' => 'village',
+                    'layout' => [
+                        'text-font' => $theme->getFont(),
+                        'text-field' => [
+                            'type' => 'identity',
+                            'property' => 'name'
+                        ],
+                        'text-ignore-placement' => false,
+                        'text-allow-overlap' => false,
+                        'text-pitch-alignment' => 'auto',
+                        'text-rotation-alignment' => 'auto',
+                        'text-transform' => 'none',
+                        'text-optional' => false,
+                        'symbol-placement' => 'line',
+                        'visibility' => 'visible',
+                        'text-size' => 16,
+                        'text-padding' => 100,
+                    ],
+                    'paint' => $theme->getPaint('labels'),
+                    'minzoom' => 0,
+                    'maxzoom' => 12,
+                ],
+                [
+                    'id' => 'town',
+                    'type' => 'symbol',
+                    'source' => 'base',
+                    'source-layer' => 'town',
+                    'layout' => [
+                        'text-font' => $theme->getFont(),
+                        'text-field' => [
+                            'type' => 'identity',
+                            'property' => 'name'
+                        ],
+                        'text-ignore-placement' => false,
+                        'text-allow-overlap' => false,
+                        'text-pitch-alignment' => 'auto',
+                        'text-rotation-alignment' => 'auto',
+                        'text-transform' => 'none',
+                        'text-optional' => false,
+                        'symbol-placement' => 'line',
+                        'visibility' => 'visible',
+                        'text-size' => 18,
+                        'text-padding' => 100,
+                    ],
+                    'paint' => $theme->getPaint('labels'),
+                    'minzoom' => 0,
+                    'maxzoom' => 12,
+                ],
+                [
+                    'id' => 'city',
+                    'type' => 'symbol',
+                    'source' => 'base',
+                    'source-layer' => 'city',
+                    'layout' => [
+                        'text-font' => $theme->getFont(),
+                        'text-field' => [
+                            'type' => 'identity',
+                            'property' => 'name'
+                        ],
+                        'text-ignore-placement' => false,
+                        'text-allow-overlap' => false,
+                        'text-pitch-alignment' => 'auto',
+                        'text-rotation-alignment' => 'auto',
+                        'text-transform' => 'none',
+                        'text-optional' => false,
+                        'symbol-placement' => 'line',
+                        'visibility' => 'visible',
+                        'text-size' => 20,
+                        'text-padding' => 100,
+                    ],
+                    'paint' => $theme->getPaint('labels'),
+                    'minzoom' => 0,
+                    'maxzoom' => 12,
                 ]
             ],
             'id' => 'heymoon-base-tiles'

@@ -66,8 +66,24 @@
             "fill-color": "rgba(44, 44, 44, 1)",
             "fill-pattern": "cemetery_11"
         },
+        "school": {
+            "fill-pattern": "school_11"
+        },
+        "dog_park": {
+            "fill-pattern": "dog_park_11"
+        },
+        "hospital": {
+            "fill-pattern": "hospital_11"
+        },
         "allotments": {
             "fill-color": "rgba(95, 17, 17, 1)"
+        },
+        "fire_station": {
+            "fill-pattern": "fire_station_11"
+        },
+        "embarkment": {
+            "line-color": "rgba(130, 130, 130, 1)",
+            "line-width": 5
         },
         "wood": {
             "circle-color": "rgba(0, 135, 37, 1)",
@@ -88,6 +104,6 @@
     "font": [
         "Roboto Black"
     ],
-    "sprite": "https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite",
-    "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf"
+    "sprite": "https://tiles.heymoon.cc/styles/osm-bright-gl-style/sprite",
+    "glyphs": "https://tiles.heymoon.cc/font-glyphs/glyphs/{fontstack}/{range}.pbf"
 }
