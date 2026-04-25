@@ -112,6 +112,7 @@ class Load extends Command
             $output->writeln("Processing zoom $zoom");
             $grid = $this->gridService->getGrid($source, $zoom);
             $progress = new ProgressBar($output, $grid->count());
+            $progress->start();
             $grid->iterate(function (TilePosition $position, array $data) use ($progress, $zoom) {
                 $progress->advance();
                 if ($zoom === $this->midZoom) {
