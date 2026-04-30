@@ -32,7 +32,7 @@ class Load extends Command
         'tower', 'school', 'staircase', 'bus_station', 'wetland', 'railway_crossing', 'marketplace', 'fence', 'ground',
         'crossing', 'cross', 'city', 'village', 'town', 'bus_stop', 'level_crossing', 'memorial', 'hospital', 'museum',
         'toilets', 'picnic_site', 'garden_centre', 'entrance', 'platform', 'square', 'doors', 'beach', 'wayside_cross',
-        'ski', 'ski_rental', 'cliff', 'dog_park', 'parking_space', 'elevator', 'pharmacy', 'post_office', 'fire_station'];
+        'ski', 'ski_rental', 'cliff', 'dog_park', 'islet', 'elevator', 'pharmacy', 'post_office', 'fire_station'];
 
     public function __construct(
         private readonly GeoJSONReader          $reader,
