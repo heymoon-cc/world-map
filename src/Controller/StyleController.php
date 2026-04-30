@@ -12,7 +12,6 @@ class StyleController extends AbstractController
 {
     public function __construct(
         private readonly string $origin,
-        private readonly string $hostname,
         private readonly ThemeFactory $factory
     ) {}
 
@@ -33,15 +32,15 @@ class StyleController extends AbstractController
                 'base' => [
                     'type' => 'vector',
                     'tiles' => [
-                        "https://$this->hostname/tiles/{x}/{y}/{z}"
+                        "{$theme->getHost()}/tiles/{x}/{y}/{z}"
                     ],
                     'minZoom' => 0,
                     'maxZoom' => 14,
                     'maxzoom' => 22
                 ]
             ],
-            'sprite' => $theme->getSprite(),
-            'glyphs' => $theme->getGlyphs(),
+            'sprite' => "{$theme->getHost()}/{$theme->getSprite()}",
+            'glyphs' => "{$theme->getHost()}/{$theme->getGlyphs()}",
             'layers' => [
                 [
                     'id' => 'ground',

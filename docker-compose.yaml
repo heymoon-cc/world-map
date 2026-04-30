@@ -1,6 +1,5 @@
 services:
     map:
-        hostname: tiles.heymoon.cc
         build: .
         volumes:
             - ./var/data:/data

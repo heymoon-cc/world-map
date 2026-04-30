@@ -9,7 +9,6 @@
 parameters:
     env(MID_ZOOM): 14
     env(ALLOW_ORIGIN): '*'
-    env(HOSTNAME): 'tiles.heymoon.cc'
     env(REDIS_HOST): '127.0.0.1'
     env(REDIS_PORT): 6379
 services:
@@ -20,7 +19,6 @@ services:
         bind:
             $midZoom: '%env(resolve:MID_ZOOM)%'
             $origin: '%env(resolve:ALLOW_ORIGIN)%'
-            $hostname: '%env(resolve:HOSTNAME)%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

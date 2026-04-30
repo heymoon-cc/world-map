@@ -34,4 +34,9 @@ class FileSystemTheme implements ThemeInterface
     {
         return $this->configuration['font'];
     }
+
+    public function getHost()
+    {
+        return $this->configuration['host'];
+    }
 }

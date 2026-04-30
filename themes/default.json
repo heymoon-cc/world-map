@@ -107,6 +107,7 @@
     "font": [
         "Roboto Black"
     ],
-    "sprite": "https://ru-tiles.heymoon.cc/styles/osm-bright-gl-style/sprite",
-    "glyphs": "https://ru-tiles.heymoon.cc/font-glyphs/glyphs/{fontstack}/{range}.pbf"
+    "sprite": "styles/osm-bright-gl-style/sprite",
+    "glyphs": "font-glyphs/glyphs/{fontstack}/{range}.pbf",
+    "host": "https://ru-tiles.heymoon.cc"
 }
