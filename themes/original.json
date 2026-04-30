@@ -1,5 +1,5 @@
 {
-    "name": "Default",
+    "name": "Original",
     "paint": {
         "labels": {
             "text-halo-color": "rgba(255, 255, 255, 1)",
@@ -107,6 +107,6 @@
     "font": [
         "Roboto Black"
     ],
-    "sprite": "https://ru-tiles.heymoon.cc/styles/osm-bright-gl-style/sprite",
-    "glyphs": "https://ru-tiles.heymoon.cc/font-glyphs/glyphs/{fontstack}/{range}.pbf"
+    "sprite": "https://tiles.heymoon.cc/styles/osm-bright-gl-style/sprite",
+    "glyphs": "https://tiles.heymoon.cc/font-glyphs/glyphs/{fontstack}/{range}.pbf"
 }

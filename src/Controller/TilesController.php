@@ -47,7 +47,8 @@ class TilesController extends AbstractController
         return new Response($tile, $tile ? 200 : 201, [
             'Content-Type' => 'application/x-protobuf',
             'Access-Control-Allow-Origin' => $this->origin,
-            'Content-Encoding' => 'gzip'
+            'Content-Encoding' => 'gzip',
+            'Cache-Control' => 'max-age=604800, public'
         ]);
     }
 

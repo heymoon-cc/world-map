@@ -44,6 +44,11 @@ class StyleController extends AbstractController
             'glyphs' => $theme->getGlyphs(),
             'layers' => [
                 [
+                    'id' => 'ground',
+                    'type' => 'background',
+                    'paint' => $theme->getPaint('ground')
+                ],
+                [
                     'id' => 'sand',
                     'type' => 'circle',
                     'source' => 'base',
@@ -316,7 +321,7 @@ class StyleController extends AbstractController
                         'text-font' => $theme->getFont(),
                         'text-field' => [
                             'type' => 'identity',
-                            'property' => 'label'
+                            'property' => 'addr:housenumber'
                         ],
                         'text-ignore-placement' => false,
                         'text-allow-overlap' => false,
@@ -326,7 +331,8 @@ class StyleController extends AbstractController
                         'text-optional' => false,
                         'symbol-placement' => 'point',
                         'visibility' => 'visible',
-                        'text-size' => ['stops' => [[14, 0], [16, 14]]]
+                        'text-size' => ['stops' => [[14, 0], [16, 14]]],
+                        'text-padding' => 10
                     ],
                     'paint' => $theme->getPaint('labels'),
                     'minzoom' => 12
