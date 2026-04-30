@@ -14,11 +14,11 @@ use HeyMoon\VectorTileDataProvider\Contract\TileServiceInterface;
 use HeyMoon\VectorTileDataProvider\Entity\Feature;
 use HeyMoon\VectorTileDataProvider\Entity\TilePosition;
 use HeyMoon\VectorTileDataProvider\Spatial\WorldGeodeticProjection;
-use RedisException;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand('app:load')]
@@ -48,55 +48,58 @@ class Load extends Command
 
     protected function configure(): void
     {
-        $this->addArgument('path');
+        $this->addOption('path', 'p', InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY);
     }
 
     /**
      * @throws GeometryException
      * @throws CoordinateSystemException
      * @throws UnexpectedGeometryException
-     * @throws RedisException
      */
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         $time = time();
         ini_set('memory_limit', '8G');
-        /** @var FeatureCollection $collection */
-        $collection = $this->reader->read(file_get_contents($input->getArgument('path')));
-        $featureCount = count($collection->getFeatures());
-        $output->writeln("$featureCount features read");
         $source = $this->sourceFactory->create();
         $layerNames = [];
-        foreach ($collection->getFeatures() as $feature) {
-            $properties = (array)$feature->getProperties();
-            $layer = $properties['place'] ?? $properties['highway'] ?? $properties['entrance'] ??
-                $properties['railway'] ?? $properties['surface'] ?? $properties['natural'] ??
-                $properties['landuse'] ?? $properties['power'] ?? $properties['amenity'] ?? $properties['leisure'] ??
-                $properties['barrier'] ?? $properties['man_made'] ?? $properties['pipeline'] ??
-                $properties['playground'] ?? $properties['waterway'] ?? $properties['shop'] ??
-                $properties['public_transport'] ?? $properties['aeroway'] ?? $properties['attraction'] ??
-                $properties['historic'] ?? $properties['tourism'] ??  (array_key_exists('cemetery', $properties) ?
-                'cemetery' : ($properties['building'] ?? null === 'yes' ? 'building' : null));
-            if ($layer === null || str_contains($layer, ':') || str_contains($layer, ' ') ||
-                str_contains($layer, ';')) {
-                $layer = 'unclassified';
-            }
-            if (!in_array($layer, static::NEEDED_LAYERS, true)) {
-                continue;
-            }
-            $result = [];
-            foreach ($properties as $name => $value) {
-                if (str_contains($name, ':') && !str_ends_with($name, ':ru') &&
-                    !str_starts_with($name, 'addr:')) {
+        foreach ($input->getOption('path') as $path) {
+            $output->writeln("Parsing $path...");
+            /** @var FeatureCollection $collection */
+            $collection = $this->reader->read(file_get_contents($path));
+            $featureCount = count($collection->getFeatures());
+            $output->writeln("$featureCount features read");
+            foreach ($collection->getFeatures() as $feature) {
+                $properties = (array)$feature->getProperties();
+                $layer = $properties['place'] ?? $properties['highway'] ?? $properties['entrance'] ??
+                    $properties['railway'] ?? $properties['surface'] ?? $properties['natural'] ??
+                    $properties['landuse'] ?? $properties['power'] ?? $properties['amenity'] ?? $properties['leisure'] ??
+                    $properties['barrier'] ?? $properties['man_made'] ?? $properties['pipeline'] ??
+                    $properties['playground'] ?? $properties['waterway'] ?? $properties['shop'] ??
+                    $properties['public_transport'] ?? $properties['aeroway'] ?? $properties['attraction'] ??
+                    $properties['historic'] ?? $properties['tourism'] ??  (array_key_exists('cemetery', $properties) ?
+                    'cemetery' : ($properties['building'] ?? null === 'yes' ? 'building' : null));
+                if ($layer === null || str_contains($layer, ':') || str_contains($layer, ' ') ||
+                    str_contains($layer, ';')) {
+                    $layer = 'unclassified';
+                }
+                if (!in_array($layer, static::NEEDED_LAYERS, true)) {
                     continue;
                 }
-                $result[$name] = $value;
+                $result = [];
+                foreach ($properties as $name => $value) {
+                    if (str_contains($name, ':') && !str_ends_with($name, ':ru') &&
+                        !str_starts_with($name, 'addr:')) {
+                        continue;
+                    }
+                    $result[$name] = $value;
+                }
+                $source->add($layer, $feature->getGeometry()->withSRID(WorldGeodeticProjection::SRID), $result);
+                if (!in_array($layer, $layerNames)) {
+                    $layerNames[] = $layer;
+                    $output->writeln("Найден новый слой $layer");
+                }
             }
-            $source->add($layer, $feature->getGeometry()->withSRID(WorldGeodeticProjection::SRID), $result);
-            if (!in_array($layer, $layerNames)) {
-                $layerNames[] = $layer;
-                $output->writeln("Найден новый слой $layer");
-            }
+            unset($collection);
         }
         $output->writeln("Mid zoom: $this->midZoom");
         foreach (range(0, $this->midZoom) as $zoom) {
