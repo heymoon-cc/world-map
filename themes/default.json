@@ -102,7 +102,8 @@
                     ]
                 ]
             }
-        }
+        },
+        "islet": {"fill-color": "#3E4A03"}
     },
     "font": [
         "Roboto Black"

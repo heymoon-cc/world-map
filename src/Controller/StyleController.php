@@ -258,6 +258,16 @@ class StyleController extends AbstractController
                     'paint' => $theme->getPaint('island')
                 ],
                 [
+                    'id' => 'islet',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'islet',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('islet')
+                ],
+                [
                     'id' => 'platform',
                     'type' => 'fill',
                     'source' => 'base',
