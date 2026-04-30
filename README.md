@@ -1,18 +1,21 @@
 # Векторная карта OSM
 
+![Saratov preview](preview.png)
+
 # Минимальные системные требования
-* Примерно по 4GB RAM на город при записи
-* Примерно по 1GB RAM на город при просмотре
+* От 4GB RAM на город при записи
+* От 1GB RAM на город при просмотре
 * 2 core CPU
 * SSD 512Mb
 
 ## Технологии
 * Symfony
-* Valkey
+* Redis
 * GEOS
+* MapLibre
 
 ## Подготовка данных
-Карта может быть экспортирована с помощью [extract.bbbike.org](https://extract.bbbike.org) в формате Osmium GeoJSON.
+Необходимые регионы можно экспортировать с помощью [extract.bbbike.org](https://extract.bbbike.org/?format=geojson.xz) в формате Osmium GeoJSON.
 
 ## Команды
 * `app:load`: инициализация карты из файла Osmium GeoJSON
@@ -20,7 +23,8 @@
   * Пример использования: `app:load -p /data/kazan.geojson -p /data/saratov.geojson`
 
 ## Методы
-* `/tiles/{x}/{y}/{z}`: получение карты
+* `/style/{name}`: получение стиля карты
+* `/tiles/{x}/{y}/{z}`: получение данных карты
 
 ## Переменные окружения
 | Название | Значение по-умолчанию | Описание                                                                                                                                                                                                                                                                                                                                                                                                         |

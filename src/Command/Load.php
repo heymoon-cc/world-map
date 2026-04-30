@@ -59,7 +59,7 @@ class Load extends Command
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         $time = time();
-        ini_set('memory_limit', '8G');
+        ini_set('memory_limit', '16G');
         $source = $this->sourceFactory->create();
         $layerNames = [];
         foreach ($input->getOption('path') as $path) {
@@ -100,6 +100,7 @@ class Load extends Command
                 }
             }
             unset($collection);
+            gc_collect_cycles();
         }
         $output->writeln("Mid zoom: $this->midZoom");
         foreach (range(0, $this->midZoom) as $zoom) {
@@ -126,6 +127,7 @@ class Load extends Command
             });
             $progress->finish();
             $output->write("\n");
+            gc_collect_cycles();
         }
         $diff = time() - $time;
         $output->writeln("Finished in $diff seconds");
