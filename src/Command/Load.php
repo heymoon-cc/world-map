@@ -48,7 +48,10 @@ class Load extends Command
 
     protected function configure(): void
     {
-        $this->addOption('path', 'p', InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY);
+        $this->addOption('path', 'p', InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY,
+            'File path');
+        $this->addOption('zoom', 'z', InputOption::VALUE_OPTIONAL,
+            'Start loading from particular zoom', 0);
     }
 
     /**
@@ -103,7 +106,7 @@ class Load extends Command
             gc_collect_cycles();
         }
         $output->writeln("Mid zoom: $this->midZoom");
-        foreach (range(0, $this->midZoom) as $zoom) {
+        foreach (range((int)$input->getOption('zoom'), $this->midZoom) as $zoom) {
             $output->writeln("Processing zoom $zoom");
             $grid = $this->gridService->getGrid($source, $zoom);
             $progress = new ProgressBar($output, $grid->count());
