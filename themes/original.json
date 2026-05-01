@@ -6,7 +6,7 @@
             "text-halo-width": 2
         },
         "sand": {
-            "circle-color": "rgba(232, 255, 0, 1)"
+            "fill-color": "rgba(232, 255, 0, 1)"
         },
         "water": {
             "fill-color": "rgba(131, 156, 255, 1)"
@@ -85,25 +85,30 @@
             "fill-pattern": "fire_station_11"
         },
         "embarkment": {
-            "line-color": "rgba(130, 130, 130, 1)",
+            "line-pattern": "road_4",
             "line-width": 5
         },
-        "wood": {
-            "circle-color": "rgba(0, 135, 37, 1)",
-            "circle-radius": {
-                "stops": [
-                    [
-                        5,
-                        5
-                    ],
-                    [
-                        15,
-                        10
-                    ]
-                ]
-            }
+        "waves": {
+            "fill-color": "rgba(131, 156, 255, 1)",
+            "fill-pattern": "wave"
         },
-        "islet": {"fill-color": "#3E4A03"}
+        "wood": {
+            "fill-color": "rgba(0, 135, 37, 1)"
+        },
+        "islet": {"fill-color": "#3E4A03"},
+        "trees": {"fill-pattern": "park_11"},
+        "primary": {
+            "line-width": 5,
+            "line-pattern": "road_1"
+        },
+        "secondary": {
+            "line-width": 5,
+            "line-pattern": "road_2"
+        },
+        "residential": {
+            "line-width": 5,
+            "line-pattern": "road_3"
+        }
     },
     "font": [
         "Roboto Black"

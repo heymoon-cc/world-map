@@ -49,12 +49,9 @@ class StyleController extends AbstractController
                 ],
                 [
                     'id' => 'sand',
-                    'type' => 'circle',
+                    'type' => 'fill',
                     'source' => 'base',
                     'source-layer' => 'sand',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ],
                     'paint' => $theme->getPaint('sand')
                 ],
                 [
@@ -68,6 +65,16 @@ class StyleController extends AbstractController
                     'paint' => $theme->getPaint('water')
                 ],
                 [
+                    'id' => 'waves',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'water',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('waves')
+                ],
+                [
                     'id' => 'river',
                     'type' => 'line',
                     'source' => 'base',
@@ -79,9 +86,7 @@ class StyleController extends AbstractController
                     'type' => 'line',
                     'source' => 'base',
                     'source-layer' => 'secondary',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ]
+                    'paint' => $theme->getPaint('secondary')
                 ],
                 [
                     'id' => 'embarkment',
@@ -127,18 +132,14 @@ class StyleController extends AbstractController
                     'type' => 'line',
                     'source' => 'base',
                     'source-layer' => 'primary',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ]
+                    'paint' => $theme->getPaint('primary')
                 ],
                 [
                     'id' => 'residential',
                     'type' => 'line',
                     'source' => 'base',
                     'source-layer' => 'residential',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ]
+                    'paint' => $theme->getPaint('residential')
                 ],
                 [
                     'id' => 'road',
@@ -424,13 +425,17 @@ class StyleController extends AbstractController
                 ],
                 [
                     'id' => 'wood',
-                    'type' => 'circle',
+                    'type' => 'fill',
                     'source' => 'base',
                     'source-layer' => 'wood',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ],
                     'paint' => $theme->getPaint('wood')
+                ],
+                [
+                    'id' => 'trees',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'wood',
+                    'paint' => $theme->getPaint('trees')
                 ],
                 [
                     'id' => 'residential_labels',
