@@ -112,7 +112,6 @@ class Load extends Command
             $progress = new ProgressBar($output, $grid->count());
             $progress->start();
             $grid->iterate(function (TilePosition $position, array $data) use ($progress, $zoom) {
-                $progress->advance();
                 if ($zoom === $this->midZoom) {
                     $layers = [];
                     /** @var Feature $item */
@@ -127,6 +126,7 @@ class Load extends Command
                 }
                 $this->store->getClient()->set("tile$position",
                     gzencode($this->tileService->getTileMVT($data, $position)->serializeToString()));
+                $progress->advance();
             });
             $progress->finish();
             $output->write("\n");
