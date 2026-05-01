@@ -52,6 +52,8 @@ class Load extends Command
             'File path');
         $this->addOption('zoom', 'z', InputOption::VALUE_OPTIONAL,
             'Start loading from particular zoom', 0);
+        $this->addOption('overwrite', 'o', InputOption::VALUE_NEGATABLE,
+            'Overwrite previous results', false);
     }
 
     /**
@@ -111,7 +113,11 @@ class Load extends Command
             $grid = $this->gridService->getGrid($source, $zoom);
             $progress = new ProgressBar($output, $grid->count());
             $progress->start();
-            $grid->iterate(function (TilePosition $position, array $data) use ($progress, $zoom) {
+            $grid->iterate(function (TilePosition $position, array $data) use ($input, $progress, $zoom) {
+                if (!$input->getOption('overwrite') && $this->store->getClient()->get("tile$position")) {
+                    return;
+                }
+                gc_collect_cycles();
                 if ($zoom === $this->midZoom) {
                     $layers = [];
                     /** @var Feature $item */
