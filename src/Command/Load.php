@@ -108,13 +108,14 @@ class Load extends Command
             gc_collect_cycles();
         }
         $output->writeln("Mid zoom: $this->midZoom");
+        $checkExisting = !$input->getOption('overwrite');
         foreach (range((int)$input->getOption('zoom'), $this->midZoom) as $zoom) {
             $output->writeln("Processing zoom $zoom");
             $grid = $this->gridService->getGrid($source, $zoom);
             $progress = new ProgressBar($output, $grid->count());
             $progress->start();
-            $grid->iterate(function (TilePosition $position, array $data) use ($input, $progress, $zoom) {
-                if (!$input->getOption('overwrite') && $this->store->getClient()->exists("tile$position")) {
+            $grid->iterate(function (TilePosition $position, array $data) use ($checkExisting, $progress, $zoom) {
+                if ($checkExisting && $this->store->getClient()->exists("tile$position")) {
                     return;
                 }
                 gc_collect_cycles();
