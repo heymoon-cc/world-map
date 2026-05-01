@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Factory;
+namespace App\Repository;
 
 use App\Kernel;
 use App\Themes\FileSystemTheme;
 
-readonly class ThemeFactory
+readonly class ThemeRepository
 {
     public function __construct(private Kernel $kernel) {}
 

@@ -2,17 +2,19 @@
 
 namespace App\Controller;
 
-use App\Factory\ThemeFactory;
+use App\Repository\ThemeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 class StyleController extends AbstractController
 {
     public function __construct(
         private readonly string $origin,
-        private readonly ThemeFactory $factory
+        private readonly ThemeRepository $factory,
+        private readonly KernelInterface $kernel
     ) {}
 
     #[Route('/style/{name}')]
@@ -37,6 +39,10 @@ class StyleController extends AbstractController
                     'minZoom' => 0,
                     'maxZoom' => 14,
                     'maxzoom' => 22
+                ],
+                'continents' => [
+                    'type' => 'geojson',
+                    'data' => json_decode(file_get_contents("{$this->kernel->getProjectDir()}/continents.json"))
                 ]
             ],
             'sprite' => "{$theme->getHost()}/{$theme->getSprite()}",
@@ -46,6 +52,12 @@ class StyleController extends AbstractController
                     'id' => 'ground',
                     'type' => 'background',
                     'paint' => $theme->getPaint('ground')
+                ],
+                [
+                    'id' => 'continents',
+                    'type' => 'fill',
+                    'source' => 'continents',
+                    'paint' => $theme->getPaint('continents')
                 ],
                 [
                     'id' => 'sand',

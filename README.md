@@ -587,3 +587,5 @@
 * `elevator`
 * `cushion`
 * `security_checkpoint`
+
+continents from <https://gist.github.com/hrbrmstr/91ea5cc9474286c72838>

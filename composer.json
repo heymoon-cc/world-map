@@ -7,7 +7,7 @@
         "php": ">=8.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "heymoon/vector-tile-data-provider": "^1.1",
+        "heymoon/vector-tile-data-provider": "^1.2",
         "symfony/console": "8.0.*",
         "symfony/dotenv": "8.0.*",
         "symfony/flex": "^2",

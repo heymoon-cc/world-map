@@ -50,7 +50,10 @@
             "fill-pattern": "playground_11"
         },
         "ground": {
-            "background-color": "#F2F5FE"
+            "background-color": "#FFF"
+        },
+        "continents": {
+            "fill-color": "#F2F5FE"
         },
         "mall": {
             "fill-color": "rgba(79, 79, 79, 1)"

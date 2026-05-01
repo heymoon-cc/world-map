@@ -14,6 +14,7 @@ use HeyMoon\VectorTileDataProvider\Contract\TileServiceInterface;
 use HeyMoon\VectorTileDataProvider\Entity\Feature;
 use HeyMoon\VectorTileDataProvider\Entity\TilePosition;
 use HeyMoon\VectorTileDataProvider\Spatial\WorldGeodeticProjection;
+use RedisException;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -60,6 +61,7 @@ class Load extends Command
      * @throws GeometryException
      * @throws CoordinateSystemException
      * @throws UnexpectedGeometryException
+     * @throws RedisException
      */
     public function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -99,13 +101,12 @@ class Load extends Command
                     $result[$name] = $value;
                 }
                 $source->add($layer, $feature->getGeometry()->withSRID(WorldGeodeticProjection::SRID), $result);
-                if (!in_array($layer, $layerNames)) {
+                if (!in_array($layer, $layerNames, true)) {
                     $layerNames[] = $layer;
                     $output->writeln("Найден новый слой $layer");
                 }
             }
             unset($collection);
-            gc_collect_cycles();
         }
         $output->writeln("Mid zoom: $this->midZoom");
         $checkExisting = !$input->getOption('overwrite');
@@ -114,15 +115,16 @@ class Load extends Command
             $grid = $this->gridService->getGrid($source, $zoom);
             $progress = new ProgressBar($output, $grid->count());
             $progress->start();
-            $grid->iterate(function (TilePosition $position, array $data) use ($checkExisting, $progress, $zoom) {
+            $grid->iterate(function (TilePosition $position, array &$data) use ($checkExisting, $progress, $zoom) {
                 if ($checkExisting && $this->store->getClient()->exists("tile$position")) {
+                    $progress->advance();
                     return;
                 }
-                gc_collect_cycles();
                 if ($zoom === $this->midZoom) {
                     $layers = [];
                     /** @var Feature $item */
-                    foreach ($data as $item) {
+                    /** @noinspection PhpParameterByRefIsNotUsedAsReferenceInspection */
+                    foreach ($data as &$item) {
                         $layers[$item->getLayer()->getName()][] = [
                             $item->getGeometry()->asText(), $item->getParameters()
                         ];

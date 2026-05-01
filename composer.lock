@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac6cc96d6dde71f382d21b2ce00d491e",
+    "content-hash": "227d48c52b08f13dace683ac1af282da",
     "packages": [
         {
             "name": "brick/geo",
@@ -64,16 +64,16 @@
         },
         {
             "name": "heymoon/vector-tile-data-provider",
-            "version": "1.1.6",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heymoon-cc/php-vector-tile-data-provider.git",
-                "reference": "d1b998cd77ad6e1fbc44f8bb3a1e8719c858fdf1"
+                "reference": "3fdecd277af109557018b086466e9b08d67d32f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heymoon-cc/php-vector-tile-data-provider/zipball/d1b998cd77ad6e1fbc44f8bb3a1e8719c858fdf1",
-                "reference": "d1b998cd77ad6e1fbc44f8bb3a1e8719c858fdf1",
+                "url": "https://api.github.com/repos/heymoon-cc/php-vector-tile-data-provider/zipball/3fdecd277af109557018b086466e9b08d67d32f5",
+                "reference": "3fdecd277af109557018b086466e9b08d67d32f5",
                 "shasum": ""
             },
             "require": {
@@ -117,9 +117,9 @@
             ],
             "support": {
                 "issues": "https://github.com/heymoon-cc/php-vector-tile-data-provider/issues",
-                "source": "https://github.com/heymoon-cc/php-vector-tile-data-provider/tree/1.1.6"
+                "source": "https://github.com/heymoon-cc/php-vector-tile-data-provider/tree/1.2.0"
             },
-            "time": "2025-06-20T20:11:42+00:00"
+            "time": "2026-05-01T06:35:57+00:00"
         },
         {
             "name": "psr/cache",
