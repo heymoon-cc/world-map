@@ -279,7 +279,7 @@ class StyleController extends AbstractController
                 ],
                 [
                     'id' => 'playground',
-                    'type' => 'circle',
+                    'type' => 'fill',
                     'source' => 'base',
                     'source-layer' => 'playground',
                     'paint' => $theme->getPaint('playground')

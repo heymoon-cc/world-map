@@ -47,7 +47,7 @@
             "fill-color": "rgba(128, 68, 0, 1)"
         },
         "playground": {
-            "circle-color": "rgba(247, 85, 4, 1)"
+            "fill-pattern": "playground_11"
         },
         "ground": {
             "background-color": "#F2F5FE"
