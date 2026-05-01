@@ -114,7 +114,7 @@ class Load extends Command
             $progress = new ProgressBar($output, $grid->count());
             $progress->start();
             $grid->iterate(function (TilePosition $position, array $data) use ($input, $progress, $zoom) {
-                if (!$input->getOption('overwrite') && $this->store->getClient()->get("tile$position")) {
+                if (!$input->getOption('overwrite') && $this->store->getClient()->exists("tile$position")) {
                     return;
                 }
                 gc_collect_cycles();
