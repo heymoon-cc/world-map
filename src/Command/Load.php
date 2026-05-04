@@ -25,6 +25,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand('app:load')]
 class Load extends Command
 {
+    protected const MIN_ZOOM = [
+        'building' => 10,
+        'building_exrtusion' => 10,
+        'building_labels' => 12
+    ];
+
     protected const NEEDED_LAYERS = ['sand', 'water', 'river', 'bridge', 'playground', 'road', 'railway', 'playground',
         'tunnel', 'sidewalk', 'wall', 'greenfield', 'brownfield', 'scrub', 'heath', 'grassland', 'grass', 'greenland',
         'island', 'building', 'farmland', 'cemetery', 'allotments', 'apartment', 'residential', 'primary', 'secondary',
@@ -100,7 +106,8 @@ class Load extends Command
                     }
                     $result[$name] = $value;
                 }
-                $source->add($layer, $feature->getGeometry()->withSRID(WorldGeodeticProjection::SRID), $result);
+                $source->add($layer, $feature->getGeometry()->withSRID(WorldGeodeticProjection::SRID), $result,
+                    static::MIN_ZOOM[$layer] ?? null);
                 if (!in_array($layer, $layerNames, true)) {
                     $layerNames[] = $layer;
                     $output->writeln("Найден новый слой $layer");
