@@ -109,7 +109,7 @@ class Load extends Command
                     $result[$name] = $value;
                 }
                 $source->add($layer, $feature->getGeometry()->withSRID(WorldGeodeticProjection::SRID), $result,
-                    static::MIN_ZOOM[$layer] ?? null);
+                    static::MIN_ZOOM[$layer] ?? 0);
                 if (!in_array($layer, $layerNames, true)) {
                     $layerNames[] = $layer;
                     $output->writeln("Найден новый слой $layer");
