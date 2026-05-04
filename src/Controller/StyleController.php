@@ -314,7 +314,8 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ],
-                    'paint' => $theme->getPaint('building')
+                    'paint' => $theme->getPaint('building'),
+                    'minzoom' => 10
                 ],
                 [
                     'id' => 'building_exrtusion',
