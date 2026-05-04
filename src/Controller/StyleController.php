@@ -315,7 +315,7 @@ class StyleController extends AbstractController
                         'visibility' => 'visible'
                     ],
                     'paint' => $theme->getPaint('building'),
-                    'minzoom' => 10
+                    'minzoom' => 12
                 ],
                 [
                     'id' => 'building_exrtusion',
@@ -323,7 +323,7 @@ class StyleController extends AbstractController
                     'source' => 'base',
                     'source-layer' => 'building',
                     'paint' => $theme->getPaint('structure'),
-                    'minzoom' => 10
+                    'minzoom' => 12
                 ],
                 [
                     'id' => 'structure',
