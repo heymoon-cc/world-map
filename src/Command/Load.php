@@ -59,6 +59,8 @@ class Load extends Command
             'File path');
         $this->addOption('zoom', 'z', InputOption::VALUE_OPTIONAL,
             'Start loading from particular zoom', 0);
+        $this->addOption('to', 't', InputOption::VALUE_OPTIONAL,
+            'Start loading from particular zoom', $this->midZoom);
         $this->addOption('overwrite', 'o', InputOption::VALUE_NEGATABLE,
             'Overwrite previous results', false);
     }
@@ -117,7 +119,8 @@ class Load extends Command
         }
         $output->writeln("Mid zoom: $this->midZoom");
         $checkExisting = !$input->getOption('overwrite');
-        foreach (range((int)$input->getOption('zoom'), $this->midZoom) as $zoom) {
+        foreach (range((int)$input->getOption('zoom'),
+            min((int)$input->getOption('to'), $this->midZoom)) as $zoom) {
             $output->writeln("Processing zoom $zoom");
             $grid = $this->gridService->getGrid($source, $zoom);
             $progress = new ProgressBar($output, $grid->count());
