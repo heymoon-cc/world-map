@@ -37,7 +37,8 @@ class Load extends Command
         'tower', 'school', 'staircase', 'bus_station', 'wetland', 'railway_crossing', 'marketplace', 'fence', 'ground',
         'crossing', 'cross', 'city', 'village', 'town', 'bus_stop', 'level_crossing', 'memorial', 'hospital', 'museum',
         'toilets', 'picnic_site', 'garden_centre', 'entrance', 'platform', 'square', 'doors', 'beach', 'wayside_cross',
-        'ski', 'ski_rental', 'cliff', 'dog_park', 'islet', 'elevator', 'pharmacy', 'post_office', 'fire_station'];
+        'ski', 'ski_rental', 'cliff', 'dog_park', 'islet', 'elevator', 'pharmacy', 'post_office', 'fire_station',
+        'unclassified', 'tram', 'footway', 'track', 'parking', 'police', 'place_of_worship', 'university', 'clinic'];
 
     public function __construct(
         private readonly GeoJSONReader          $reader,
@@ -85,15 +86,17 @@ class Load extends Command
                 $properties = (array)$feature->getProperties();
                 $layer = $properties['place'] ?? $properties['highway'] ?? $properties['entrance'] ??
                     $properties['railway'] ?? $properties['surface'] ?? $properties['natural'] ??
-                    $properties['landuse'] ?? $properties['power'] ?? $properties['amenity'] ?? $properties['leisure'] ??
-                    $properties['barrier'] ?? $properties['man_made'] ?? $properties['pipeline'] ??
-                    $properties['playground'] ?? $properties['waterway'] ?? $properties['shop'] ??
-                    $properties['public_transport'] ?? $properties['aeroway'] ?? $properties['attraction'] ??
-                    $properties['historic'] ?? $properties['tourism'] ??  (array_key_exists('cemetery', $properties) ?
-                    'cemetery' : ($properties['building'] ?? null === 'yes' ? 'building' : null));
+                    $properties['landuse'] ?? $properties['power'] ?? $properties['amenity'] ??
+                    $properties['leisure'] ?? $properties['barrier'] ?? $properties['man_made'] ??
+                    $properties['pipeline'] ?? $properties['playground'] ?? $properties['waterway'] ??
+                    $properties['shop'] ?? $properties['public_transport'] ?? $properties['aeroway'] ??
+                    $properties['attraction'] ?? $properties['historic'] ?? $properties['tourism'] ??
+                    (array_key_exists('cemetery', $properties) ? 'cemetery' :
+                        ($properties['building'] ?? null === 'yes' ? 'building' :
+                        ($properties['building'] ?? null)));
                 if ($layer === null || str_contains($layer, ':') || str_contains($layer, ' ') ||
                     str_contains($layer, ';')) {
-                    $layer = 'unclassified';
+                    $layer = 'unknown';
                 }
                 if (!in_array($layer, static::NEEDED_LAYERS, true)) {
                     continue;
