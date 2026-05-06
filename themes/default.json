@@ -72,20 +72,8 @@
             "fill-color": "rgba(44, 44, 44, 1)",
             "fill-pattern": "cemetery_11"
         },
-        "school": {
-            "fill-pattern": "school_11"
-        },
-        "dog_park": {
-            "fill-pattern": "dog_park_11"
-        },
-        "hospital": {
-            "fill-pattern": "hospital_11"
-        },
         "allotments": {
             "fill-color": "rgba(95, 17, 17, 1)"
-        },
-        "fire_station": {
-            "fill-pattern": "fire_station_11"
         },
         "embarkment": {
             "line-pattern": "road_4",
@@ -111,6 +99,10 @@
         "residential": {
             "line-width": 5,
             "line-pattern": "road_3"
+        },
+        "unclassified": {
+            "line-width": 5,
+            "line-pattern": "road_4"
         }
     },
     "font": [

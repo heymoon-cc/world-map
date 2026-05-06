@@ -154,6 +154,13 @@ class StyleController extends AbstractController
                     'paint' => $theme->getPaint('residential')
                 ],
                 [
+                    'id' => 'unclassified',
+                    'type' => 'line',
+                    'source' => 'base',
+                    'source-layer' => 'unclassified',
+                    'paint' => $theme->getPaint('unclassified')
+                ],
+                [
                     'id' => 'road',
                     'type' => 'line',
                     'source' => 'base',
@@ -382,43 +389,53 @@ class StyleController extends AbstractController
                 ],
                 [
                     'id' => 'school',
-                    'type' => 'fill',
+                    'type' => 'symbol',
                     'source' => 'base',
                     'source-layer' => 'school',
                     'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('school')
+                        'visibility' => 'visible',
+                        'icon-image' => 'school_11'
+                    ]
                 ],
                 [
                     'id' => 'hospital',
-                    'type' => 'fill',
+                    'type' => 'symbol',
                     'source' => 'base',
                     'source-layer' => 'hospital',
                     'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('hospital')
+                        'visibility' => 'visible',
+                        'icon-image' => 'hospital_11'
+                    ]
                 ],
                 [
                     'id' => 'fire_station',
-                    'type' => 'fill',
+                    'type' => 'symbol',
                     'source' => 'base',
                     'source-layer' => 'fire_station',
                     'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('fire_station')
+                        'visibility' => 'visible',
+                        'icon-image' => 'fire_station_11'
+                    ]
                 ],
                 [
                     'id' => 'dog_park',
-                    'type' => 'fill',
+                    'type' => 'symbol',
                     'source' => 'base',
                     'source-layer' => 'dog_park',
                     'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('dog_park')
+                        'visibility' => 'visible',
+                        'icon-image' => 'dog_park_11'
+                    ]
+                ],
+                [
+                    'id' => 'police',
+                    'type' => 'symbol',
+                    'source' => 'base',
+                    'source-layer' => 'police',
+                    'layout' => [
+                        'visibility' => 'visible',
+                        'icon-image' => 'police_11'
+                    ]
                 ],
                 [
                     'id' => 'allotments',
@@ -504,6 +521,31 @@ class StyleController extends AbstractController
                     'type' => 'symbol',
                     'source' => 'base',
                     'source-layer' => 'secondary',
+                    'layout' => [
+                        'text-font' => $theme->getFont(),
+                        'text-field' => [
+                            'type' => 'identity',
+                            'property' => 'name'
+                        ],
+                        'text-ignore-placement' => false,
+                        'text-allow-overlap' => false,
+                        'text-pitch-alignment' => 'auto',
+                        'text-rotation-alignment' => 'auto',
+                        'text-transform' => 'none',
+                        'text-optional' => false,
+                        'symbol-placement' => 'line',
+                        'visibility' => 'visible',
+                        'text-size' => 15,
+                        'text-writing-mode' => [],
+                        'text-keep-upright' => true
+                    ],
+                    'paint' => $theme->getPaint('labels')
+                ],
+                [
+                    'id' => 'unclassified_labels',
+                    'type' => 'symbol',
+                    'source' => 'base',
+                    'source-layer' => 'unclassified',
                     'layout' => [
                         'text-font' => $theme->getFont(),
                         'text-field' => [
