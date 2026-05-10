@@ -60,13 +60,6 @@ class StyleController extends AbstractController
                     'paint' => $theme->getPaint('continents')
                 ],
                 [
-                    'id' => 'sand',
-                    'type' => 'fill',
-                    'source' => 'base',
-                    'source-layer' => 'sand',
-                    'paint' => $theme->getPaint('sand')
-                ],
-                [
                     'id' => 'water',
                     'type' => 'fill',
                     'source' => 'base',
@@ -92,6 +85,103 @@ class StyleController extends AbstractController
                     'source' => 'base',
                     'source-layer' => 'river',
                     'paint' => $theme->getPaint('river')
+                ],
+                [
+                    'id' => 'sand',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'sand',
+                    'paint' => $theme->getPaint('sand')
+                ],
+                [
+                    'id' => 'battlefield',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'battlefield',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('battlefield')
+                ],
+                [
+                    'id' => 'brownfield',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'brownfield',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('brownfield')
+                ],
+                [
+                    'id' => 'scrub',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'scrub',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('scrub')
+                ],
+                [
+                    'id' => 'heath',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'heath',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('heath')
+                ],
+                [
+                    'id' => 'grassland',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'grassland',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('grassland')
+                ],
+                [
+                    'id' => 'grass',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'grass',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('grass')
+                ],
+                [
+                    'id' => 'greenfield',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'greenfield',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('greenfield')
+                ],
+                [
+                    'id' => 'island',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'island',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('island')
+                ],
+                [
+                    'id' => 'islet',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'islet',
+                    'layout' => [
+                        'visibility' => 'visible'
+                    ],
+                    'paint' => $theme->getPaint('islet')
                 ],
                 [
                     'id' => 'secondary',
@@ -196,96 +286,6 @@ class StyleController extends AbstractController
                     'layout' => [
                         'visibility' => 'visible'
                     ]
-                ],
-                [
-                    'id' => 'battlefield',
-                    'type' => 'fill',
-                    'source' => 'base',
-                    'source-layer' => 'battlefield',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('battlefield')
-                ],
-                [
-                    'id' => 'brownfield',
-                    'type' => 'fill',
-                    'source' => 'base',
-                    'source-layer' => 'brownfield',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('brownfield')
-                ],
-                [
-                    'id' => 'scrub',
-                    'type' => 'fill',
-                    'source' => 'base',
-                    'source-layer' => 'scrub',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('scrub')
-                ],
-                [
-                    'id' => 'heath',
-                    'type' => 'fill',
-                    'source' => 'base',
-                    'source-layer' => 'heath',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('heath')
-                ],
-                [
-                    'id' => 'grassland',
-                    'type' => 'fill',
-                    'source' => 'base',
-                    'source-layer' => 'grassland',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('grassland')
-                ],
-                [
-                    'id' => 'grass',
-                    'type' => 'fill',
-                    'source' => 'base',
-                    'source-layer' => 'grass',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('grass')
-                ],
-                [
-                    'id' => 'greenfield',
-                    'type' => 'fill',
-                    'source' => 'base',
-                    'source-layer' => 'greenfield',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('greenfield')
-                ],
-                [
-                    'id' => 'island',
-                    'type' => 'fill',
-                    'source' => 'base',
-                    'source-layer' => 'island',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('island')
-                ],
-                [
-                    'id' => 'islet',
-                    'type' => 'fill',
-                    'source' => 'base',
-                    'source-layer' => 'islet',
-                    'layout' => [
-                        'visibility' => 'visible'
-                    ],
-                    'paint' => $theme->getPaint('islet')
                 ],
                 [
                     'id' => 'platform',
