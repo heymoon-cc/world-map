@@ -19,6 +19,13 @@
             "line-color": "rgba(116, 116, 116, 1)",
             "line-width": 2
         },
+        "bridge-fill": {
+            "fill-color": "rgba(116, 116, 116, 1)"
+        },
+        "bridge-fill-shadow": {
+            "fill-opacity": 0.3,
+            "fill-translate": [3, 3]
+        },
         "railway": {
             "line-color": "rgba(71, 0, 139, 1)"
         },

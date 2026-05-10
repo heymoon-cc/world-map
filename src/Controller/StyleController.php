@@ -184,22 +184,11 @@ class StyleController extends AbstractController
                     'paint' => $theme->getPaint('islet')
                 ],
                 [
-                    'id' => 'secondary',
-                    'type' => 'line',
+                    'id' => 'bridge-fill-shadow',
+                    'type' => 'fill',
                     'source' => 'base',
-                    'source-layer' => 'secondary',
-                    'paint' => $theme->getPaint('secondary')
-                ],
-                [
-                    'id' => 'embarkment',
-                    'type' => 'line',
-                    'source' => 'base',
-                    'source-layer' => 'embarkment',
-                    'layout' => [
-                        'line-cap' => 'round',
-                        'line-join' => 'round'
-                    ],
-                    'paint' => $theme->getPaint('embarkment')
+                    'source-layer' => 'bridge',
+                    'paint' => $theme->getPaint('bridge-fill-shadow')
                 ],
                 [
                     'id' => 'bridge-shadow',
@@ -220,6 +209,13 @@ class StyleController extends AbstractController
                     ]
                 ],
                 [
+                    'id' => 'bridge-fill',
+                    'type' => 'fill',
+                    'source' => 'base',
+                    'source-layer' => 'bridge',
+                    'paint' => $theme->getPaint('bridge-fill')
+                ],
+                [
                     'id' => 'bridge',
                     'type' => 'line',
                     'source' => 'base',
@@ -230,6 +226,23 @@ class StyleController extends AbstractController
                     'paint' => $theme->getPaint('bridge')
                 ],
                 [
+                    'id' => 'secondary',
+                    'type' => 'line',
+                    'source' => 'base',
+                    'source-layer' => 'secondary',
+                    'paint' => $theme->getPaint('secondary')
+                ],
+                [
+                    'id' => 'embarkment',
+                    'type' => 'line',
+                    'source' => 'base',
+                    'source-layer' => 'embarkment',
+                    'layout' => [
+                        'line-cap' => 'round',
+                        'line-join' => 'round'
+                    ],
+                    'paint' => $theme->getPaint('embarkment')
+                ],                [
                     'id' => 'primary',
                     'type' => 'line',
                     'source' => 'base',
